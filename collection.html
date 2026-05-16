@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="collection.css">
+  <link rel="stylesheet" href="styles/collection.css">
 </head>
 <body class="collection-page">
 
@@ -33,11 +33,11 @@
     <li><a href="index.html#about">About us</a></li>
   </ul>
   <div class="nav-right">
-    <a class="nav-icon-btn" href="index.html" aria-label="Back to home">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M10 19l-7-7 7-7"/><path d="M3 12h18"/></svg>
-    </a>
-    <a class="nav-icon-btn" href="#curated" aria-label="Browse curated sets">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <button class="nav-icon-btn" type="button" aria-label="Profile">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+    <a class="nav-icon-btn" href="cart.html" aria-label="Open cart">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
     </a>
   </div>
 </nav>
@@ -111,7 +111,7 @@
       </div>
       <div class="collection-card-footer">
         <div>
-          <div class="collection-card-name">Lumière Luxe Lamp</div>
+          <div class="collection-card-name">Lumiere Luxe Lamp</div>
           <div class="collection-card-note">A softer, ambient composition works well here.</div>
         </div>
         <div class="collection-meta">Popular</div>
@@ -152,6 +152,10 @@
       <button class="catalog-chip" data-filter="views">Most view</button>
       <button class="catalog-chip" data-filter="likes">Most like</button>
       <button class="catalog-chip" data-filter="bought">Bought</button>
+      <button class="catalog-toggle" id="catalogSortToggle" type="button" aria-pressed="false">
+        <span class="catalog-toggle-icon" aria-hidden="true">v</span>
+        <span class="catalog-toggle-text">Decrease</span>
+      </button>
     </div>
     <div class="catalog-count" id="catalogCount">30 products ready</div>
   </div>
@@ -231,6 +235,9 @@
   </div>
 </footer>
 
-<script src="main.js"></script>
+<div id="toast">
+  <span id="toastMsg">Added to cart</span>
+</div>
+<script src="script/collection.js" type="module"></script>
 </body>
 </html>

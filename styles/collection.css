@@ -487,6 +487,40 @@ nav.scrolled {
   color: #fff;
   border-color: var(--dark);
 }
+.catalog-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(201,123,46,0.35);
+  background: rgba(201,123,46,0.1);
+  color: var(--text-dark);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.catalog-toggle:hover {
+  transform: translateY(-1px);
+  border-color: rgba(201,123,46,0.55);
+  background: rgba(201,123,46,0.18);
+}
+.catalog-toggle[aria-pressed="true"] {
+  background: var(--dark);
+  color: #fff;
+  border-color: var(--dark);
+}
+.catalog-toggle:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+.catalog-toggle-icon {
+  font-size: 0.9rem;
+  line-height: 1;
+}
 .catalog-count {
   color: var(--text-muted);
   font-size: 0.82rem;
@@ -509,6 +543,11 @@ nav.scrolled {
   flex-direction: column;
   min-height: 100%;
 }
+.catalog-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 26px 26px 0 0;
+}
 .catalog-stats {
   display: flex;
   flex-wrap: wrap;
@@ -530,6 +569,29 @@ nav.scrolled {
   border-bottom: 1px solid rgba(0,0,0,0.06);
   border-radius: 26px 26px 0 0;
   color: rgba(201,123,46,0.58);
+}
+.catalog-add-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--dark);
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transform: scale(0);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s;
+}
+.catalog-product:hover .catalog-add-btn {
+  transform: scale(1);
+}
+.catalog-add-btn:hover {
+  background: var(--amber);
 }
 .catalog-product-body {
   padding: 18px 18px 20px;
@@ -613,6 +675,24 @@ nav.scrolled {
   color: var(--text-dark);
 }
 .catalog-more:active { transform: translateY(0); }
+
+/* -- TOAST -- */
+#toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: var(--dark);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  border: 1px solid rgba(201,123,46,0.4);
+  z-index: 9999;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  pointer-events: none;
+}
 
 /* ── FOOTER ── */
 footer {

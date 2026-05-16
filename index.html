@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lamplix — Light, Elevated</title>
+  <title>Geewonii — Light, Elevated</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
 
 <!-- PAGE LOADER -->
 <div id="loader">
   <div class="loader-inner">
-    <div class="loader-logo">Lamplix</div>
+    <div class="loader-logo">Geewonii</div>
     <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
   </div>
 </div>
@@ -27,7 +27,7 @@
 <nav id="navbar">
   <a href="#" class="logo">
     <div class="logo-icon"></div>
-    Lamplix
+    Geewonii
   </a>
   <ul class="nav-links">
     <li><a href="#collection">Collection</a></li>
@@ -43,9 +43,9 @@
     <div class="nav-icon-btn">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
     </div>
-    <div class="nav-icon-btn" id="cartBtn" onclick="showCartToast()">
+    <a class="nav-icon-btn" href="cart.html" aria-label="Open cart">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-    </div>
+    </a>
   </div>
 </nav>
 
@@ -93,7 +93,7 @@
         <div><div style="color:rgba(255,255,255,0.8);font-size:0.8rem">24 Hours</div><div>Electricity</div></div>
       </div>
       <div class="pc-price">$630.00</div>
-      <div class="pc-add" onclick="addToCart('Aura Glass Lamp')">
+      <div class="pc-add" onclick="addToCart('aura-glass-lamp')">
         <span>Add to cart</span>
         <div class="pc-add-btn">
           <svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -139,7 +139,7 @@
             Lamp image
           </div>
         </div>
-        <button class="pt-add-btn" onclick="addToCart('Velvet Shine Lamp')">
+        <button class="pt-add-btn" onclick="addToCart('velvet-shine-lamp')">
           <svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
       </div>
@@ -157,12 +157,12 @@
             Lamp image
           </div>
         </div>
-        <button class="pt-add-btn" onclick="addToCart('Lumière Luxe Lamp')">
+        <button class="pt-add-btn" onclick="addToCart('lumiere-luxe-lamp')">
           <svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
       </div>
       <div class="pt-info">
-        <div><div class="pt-name">Lumière Luxe Lamp</div><div class="pt-price">$210.00</div></div>
+        <div><div class="pt-name">Lumiere Luxe Lamp</div><div class="pt-price">$210.00</div></div>
         <span class="pt-tag">Bestseller</span>
       </div>
     </div>
@@ -175,7 +175,7 @@
             Lamp image
           </div>
         </div>
-        <button class="pt-add-btn" onclick="addToCart('Zenith Luxe Lamp')">
+        <button class="pt-add-btn" onclick="addToCart('zenith-luxe-lamp')">
           <svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
       </div>
@@ -232,7 +232,7 @@
     </div>
     <div class="price-row">
       <div class="big-price">$630.00</div>
-      <button class="btn-dark" onclick="addToCart('Aura Glass Collection')">
+      <button class="btn-dark" onclick="addToCart('aura-glass-lamp')">
         Add to cart
         <span class="btn-arrow"><svg width="12" height="12" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
       </button>
@@ -381,6 +381,6 @@
 <div id="toast" style="position:fixed;bottom:32px;right:32px;background:var(--dark);color:#fff;padding:14px 24px;border-radius:50px;font-size:0.85rem;border:1px solid rgba(201,123,46,0.4);z-index:9999;transform:translateY(80px);opacity:0;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);pointer-events:none;">
   <span id="toastMsg">Added to cart ✓</span>
 </div>
-<script src="main.js"></script>
+<script src="script/index.js" type="module"></script>
 </body>
 </html>
