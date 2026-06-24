@@ -1,4 +1,4 @@
-const CART_KEY = "lamplix_cart";
+const CART_KEY = "libra_lumina_cart";
 
 const readCart = () => {
   try {

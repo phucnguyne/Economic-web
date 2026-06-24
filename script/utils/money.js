@@ -1,10 +1,10 @@
-const currencyFormatter = new Intl.NumberFormat("en-US", {
+const currencyFormatter = new Intl.NumberFormat("vi-VN", {
   style: "currency",
-  currency: "USD",
-  minimumFractionDigits: 2
+  currency: "VND",
+  maximumFractionDigits: 0
 });
 
-const formatMoney = cents => currencyFormatter.format(cents / 100);
+const formatMoney = amount => currencyFormatter.format(amount);
 
 const calcSubtotal = lineItems => lineItems.reduce((sum, item) => sum + item.priceCents * item.quantity, 0);
 
@@ -12,7 +12,7 @@ const calcShipping = subtotalCents => {
   if (subtotalCents === 0) {
     return 0;
   }
-  return subtotalCents >= 30000 ? 0 : 2500;
+  return 50000; // Flat fee of 50,000 ₫
 };
 
 const calcTax = subtotalCents => Math.round(subtotalCents * 0.05);

@@ -1,3 +1,13 @@
+@import url("components/nav.css");
+@import url("components/hero.css");
+@import url("components/ticker.css");
+@import url("components/collection.css");
+@import url("components/features.css");
+@import url("components/spotlight.css");
+@import url("components/testimonials.css");
+@import url("components/cta.css");
+@import url("components/footer.css");
+
 *,
 *::before,
 *::after {
@@ -7,17 +17,17 @@
 }
 
 :root {
-  --bg: #f5f0e8;
-  --dark: #141210;
-  --dark2: #1e1a16;
-  --amber: #c97b2e;
-  --amber-light: #e8a84c;
-  --amber-glow: #f0c060;
-  --cream: #faf7f2;
-  --text-dark: #0f0d0b;
-  --text-muted: #7a6e60;
-  --glass: rgba(255, 255, 255, 0.06);
-  --glass-border: rgba(255, 255, 255, 0.12);
+  --bg: #EFE8D5; /* warm light background */
+  --dark: #0F0A07; /* deep charcoal for hero */
+  --dark2: #2C1E14; /* rich espresso secondary */
+  --amber: #B8860B; /* dark gold accent */
+  --amber-light: #D4AF37; /* lighter gold for gradients */
+  --amber-glow: #FFD700; /* bright gold glow */
+  --cream: #FAF5E4; /* off‑white cream */
+  --text-dark: #2B2B2B; /* deep dark text for contrast */
+  --text-muted: #6C757D; /* muted gray */
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
   --radius: 20px;
   --radius-sm: 12px;
 }
@@ -27,7 +37,7 @@ html {
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Noto Serif Display", serif;
   background: var(--bg);
   color: var(--text-dark);
   overflow-x: hidden;
@@ -53,7 +63,7 @@ body {
   position: fixed;
   width: 28px;
   height: 28px;
-  border: 1.5px solid rgba(201, 123, 46, 0.6);
+  border: 1.5px solid rgb(107, 186, 223);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -75,7 +85,7 @@ body:has(a:hover) #cursor-ring,
 body:has(button:hover) #cursor-ring {
   width: 40px;
   height: 40px;
-  border-color: rgba(201, 123, 46, 0.9);
+  border-color: rgba(111,142,158, 0.9);
   background: transparent;
 }
 body.cursor-active #cursor,
@@ -96,89 +106,7 @@ body:has(a:active) #cursor-ring {
   opacity: 1;
 }
 
-/* ── NAV ── */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 22px 48px;
-  transition:
-    background 0.4s,
-    backdrop-filter 0.4s;
-}
-nav.scrolled {
-  background: rgba(20, 18, 16, 0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--glass-border);
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: 0.02em;
-}
-.logo-icon {
-  width: 28px;
-  height: 28px;
-  border: 1.5px solid var(--amber);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.logo-icon::after {
-  content: "";
-  width: 6px;
-  height: 14px;
-  background: var(--amber);
-  border-radius: 3px;
-}
-.nav-links {
-  display: flex;
-  gap: 36px;
-  list-style: none;
-}
-.nav-links a {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  transition: color 0.25s;
-  position: relative;
-}
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--amber);
-  transition: width 0.3s ease;
-}
-.nav-links a:hover {
-  color: #fff;
-}
-.nav-links a:hover::after {
-  width: 100%;
-}
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
 .search-bar {
   display: flex;
   align-items: center;
@@ -195,7 +123,7 @@ nav.scrolled {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.82rem;
   width: 120px;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Noto Serif Display", serif;
 }
 .search-bar input::placeholder {
   color: rgba(255, 255, 255, 0.35);
@@ -238,13 +166,14 @@ nav.scrolled {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(201, 123, 46, 0.22) 0%,
+    rgba(111,142,158, 0.05) 0%,
     transparent 70%
   );
   top: 50%;
   left: 55%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  animation: glowPulse 6s infinite ease-in-out;
 }
 .hero-circle {
   position: absolute;
@@ -253,14 +182,15 @@ nav.scrolled {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(201, 123, 46, 0.12) 0%,
+    rgba(111,142,158, 0.3) 0%,
     rgba(30, 26, 22, 0.6) 60%,
     transparent 100%
   );
-  border: 1px solid rgba(201, 123, 46, 0.15);
+  border: 1px solid rgba(111,142,158, 0.3);
   top: 50%;
   left: 58%;
   transform: translate(-50%, -50%);
+  animation: circlePulse 8s infinite ease-in-out;
 }
 
 .hero-content {
@@ -289,7 +219,7 @@ nav.scrolled {
   background: var(--amber);
 }
 .hero-title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: clamp(4rem, 7vw, 7rem);
   font-weight: 300;
   line-height: 1;
@@ -300,7 +230,9 @@ nav.scrolled {
 }
 .hero-title em {
   font-style: italic;
-  color: var(--amber-light);
+  background: linear-gradient(45deg, var(--amber), var(--amber-light));
+  -webkit-background-clip: text;
+  color: transparent;
 }
 .hero-desc {
   max-width: 340px;
@@ -335,11 +267,11 @@ nav.scrolled {
   transition:
     border-color 0.3s,
     background 0.3s;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Noto Serif Display", serif;
 }
 .btn-primary:hover {
   border-color: var(--amber);
-  background: rgba(201, 123, 46, 0.1);
+  background: rgba(111,142,158, 0.1);
 }
 .btn-arrow {
   width: 32px;
@@ -392,7 +324,7 @@ nav.scrolled {
 .product-card-inner {
   background: rgba(30, 26, 22, 0.75);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(201, 123, 46, 0.25);
+  border: 1px solid rgba(111,142,158, 0.25);
   border-radius: var(--radius);
   padding: 28px;
   width: 240px;
@@ -414,7 +346,7 @@ nav.scrolled {
   animation: pulse 2s infinite;
 }
 .pc-name {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: 1.4rem;
   font-weight: 400;
   color: #fff;
@@ -455,7 +387,7 @@ nav.scrolled {
   transition: background 0.3s;
 }
 .pc-add:hover {
-  background: rgba(201, 123, 46, 0.15);
+  background: rgba(111,142,158, 0.15);
 }
 .pc-add span {
   font-size: 0.8rem;
@@ -478,20 +410,24 @@ nav.scrolled {
     rgba(255, 255, 255, 0.05) 0%,
     rgba(255, 255, 255, 0.02) 100%
   );
-  border: 2px dashed rgba(201, 123, 46, 0.3);
+  border: 2px dashed rgba(111,142,158, 0.3);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  color: rgba(201, 123, 46, 0.5);
+  color: rgba(111,142,158, 0.5);
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .img-placeholder svg {
   opacity: 0.4;
+}
+.img-placeholder:hover {
+  border-color: var(--amber);
+  color: var(--amber);
 }
 
 /* Hero center image placeholder */
@@ -507,7 +443,7 @@ nav.scrolled {
 .hero-img-wrap .img-placeholder {
   width: 100%;
   height: 100%;
-  border-color: rgba(201, 123, 46, 0.2);
+  border-color: rgba(111,142,158, 0.2);
 }
 
 /* ── LOGO TICKER ── */
@@ -554,7 +490,7 @@ nav.scrolled {
   border-radius: 50px;
   background: var(--cream);
   white-space: nowrap;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -570,7 +506,7 @@ nav.scrolled {
 }
 .ticker-logo:hover {
   transform: scale(1.18) translateY(-4px);
-  box-shadow: 0 12px 40px rgba(201, 123, 46, 0.2);
+  box-shadow: 0 12px 40px rgba(111,142,158, 0.2);
   color: var(--amber);
   border-color: var(--amber-light);
   background: #fff;
@@ -624,7 +560,7 @@ nav.scrolled {
   margin-bottom: 12px;
 }
 .section-title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: clamp(2.4rem, 4vw, 3.6rem);
   font-weight: 300;
   line-height: 1.1;
@@ -732,7 +668,7 @@ nav.scrolled {
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 20px;
-  background: rgba(201, 123, 46, 0.1);
+  background: rgba(111,142,158, 0.1);
   color: var(--amber);
 }
 
@@ -756,13 +692,13 @@ nav.scrolled {
   border-right: none;
 }
 .feat-item:hover {
-  background: rgba(201, 123, 46, 0.07);
+  background: rgba(111,142,158, 0.07);
 }
 .feat-num {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: 3rem;
   font-weight: 300;
-  color: rgba(201, 123, 46, 0.2);
+  color: rgba(111,142,158, 0.2);
   line-height: 1;
   margin-bottom: 16px;
 }
@@ -812,7 +748,7 @@ nav.scrolled {
   margin-bottom: 16px;
 }
 .spotlight-name {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: clamp(2.8rem, 5vw, 4.5rem);
   font-weight: 300;
   line-height: 1.05;
@@ -852,7 +788,7 @@ nav.scrolled {
   justify-content: space-between;
 }
 .big-price {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: 3rem;
   font-weight: 300;
   color: var(--amber);
@@ -870,7 +806,7 @@ nav.scrolled {
   letter-spacing: 0.04em;
   border: none;
   cursor: pointer;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Noto Serif Display", serif;
   transition:
     background 0.3s,
     transform 0.2s;
@@ -901,7 +837,7 @@ nav.scrolled {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(201, 123, 46, 0.22);
+  border: 1px solid rgba(111,142,158, 0.22);
   background: #fff;
   color: var(--text-dark);
   font-size: 1.6rem;
@@ -1013,12 +949,12 @@ nav.scrolled {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(201, 123, 46, 0.15) 0%,
+    rgba(111,142,158, 0.15) 0%,
     transparent 70%
   );
 }
 .cta-title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: clamp(2.2rem, 3.5vw, 3.2rem);
   font-weight: 300;
   color: #fff;
@@ -1181,6 +1117,18 @@ footer {
   }
 }
 
+/* ── KEYFRAMES ── */
+@keyframes glowPulse {
+  0% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(1.2); }
+  100% { opacity: 0.8; transform: scale(1); }
+}
+@keyframes circlePulse {
+  0% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.05); }
+  100% { opacity: 0.8; transform: scale(1); }
+}
+
 /* ── PAGE LOADER ── */
 #loader {
   position: fixed;
@@ -1202,7 +1150,7 @@ footer {
   text-align: center;
 }
 .loader-logo {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: 2.5rem;
   color: #fff;
   margin-bottom: 24px;

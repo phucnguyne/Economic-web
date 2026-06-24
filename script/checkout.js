@@ -122,7 +122,7 @@ if (checkoutForm) {
     const createdAt = new Date().toISOString();
 
     const order = {
-      id: `LPX-${Math.random().toString(36).slice(2, 8).toUpperCase()}`,
+      id: `LL-${Math.random().toString(36).slice(2, 8).toUpperCase()}`,
       createdAt,
       shippingMethod,
       customer: {

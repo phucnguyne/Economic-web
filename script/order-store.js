@@ -1,4 +1,4 @@
-const ORDER_KEY = "lamplix_order";
+const ORDER_KEY = "libra_lumina_order";
 
 const saveOrder = order => {
   localStorage.setItem(ORDER_KEY, JSON.stringify(order));

@@ -1,17 +1,17 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #f5f0e8;
-  --dark: #141210;
-  --dark2: #1e1a16;
-  --amber: #c97b2e;
-  --amber-light: #e8a84c;
-  --amber-glow: #f0c060;
-  --cream: #faf7f2;
-  --text-dark: #0f0d0b;
-  --text-muted: #7a6e60;
-  --glass: rgba(255,255,255,0.06);
-  --glass-border: rgba(255,255,255,0.12);
+  --bg: #EFE8D5; /* warm light background */
+  --dark: #0F0A07; /* deep charcoal */
+  --dark2: #2C1E14; /* rich espresso secondary */
+  --amber: #B8860B; /* dark gold accent */
+  --amber-light: #D4AF37; /* lighter gold */
+  --amber-glow: #FFD700; /* bright gold glow */
+  --cream: #FAF5E4; /* off-white cream */
+  --text-dark: #2B2B2B; /* deep dark text */
+  --text-muted: #6C757D; /* muted gray */
+  --glass: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
   --radius: 20px;
   --radius-sm: 12px;
 }
@@ -19,7 +19,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Noto Serif Display', serif;
   background: var(--bg);
   color: var(--text-dark);
   overflow-x: hidden;
@@ -40,7 +40,7 @@ body {
   position: fixed;
   width: 28px;
   height: 28px;
-  border: 1.5px solid rgba(201,123,46,0.6);
+  border: 1.5px solid rgba(111,142,158,0.6);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -57,7 +57,7 @@ body:has(a:hover) #cursor-ring,
 body:has(button:hover) #cursor-ring {
   width: 40px;
   height: 40px;
-  border-color: rgba(201,123,46,0.9);
+  border-color: rgba(111,142,158,0.9);
   background: transparent;
 }
 body.cursor-active #cursor,
@@ -93,7 +93,7 @@ nav.scrolled {
 }
 .logo {
   display: flex; align-items: center; gap: 10px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Noto Serif Display', serif;
   font-size: 1.5rem; font-weight: 600; color: #fff;
   text-decoration: none; letter-spacing: 0.02em;
 }
@@ -135,12 +135,13 @@ nav.scrolled {
 /* ── IMAGE PLACEHOLDER ── */
 .img-placeholder {
   background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-  border: 2px dashed rgba(201,123,46,0.3);
+  border: 2px dashed rgba(111,142,158,0.3);
   border-radius: var(--radius);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 10px; color: rgba(201,123,46,0.5);
+  gap: 10px; color: rgba(111,142,158,0.5);
   font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
 }
+.img-placeholder:hover { border-color: var(--amber); color: var(--amber); }
 .img-placeholder svg { opacity: 0.4; }
 
 /* ── COLLECTION PAGE ── */
@@ -152,9 +153,9 @@ nav.scrolled {
   text-decoration: none; letter-spacing: 0.04em;
   cursor: pointer; background: transparent;
   transition: border-color 0.3s, background 0.3s;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Noto Serif Display', serif;
 }
-.btn-primary:hover { border-color: var(--amber); background: rgba(201,123,46,0.1); }
+.btn-primary:hover { border-color: var(--amber); background: rgba(111,142,158,0.1); }
 .btn-arrow {
   width: 32px; height: 32px; border-radius: 50%;
   background: var(--amber); display: flex; align-items: center; justify-content: center;
@@ -164,8 +165,8 @@ nav.scrolled {
 
 .collection-page {
   background:
-    radial-gradient(circle at top left, rgba(201,123,46,0.12), transparent 28%),
-    linear-gradient(180deg, #171310 0%, #f5f0e8 34%, #f5f0e8 100%);
+    radial-gradient(circle at top left, rgba(111,142,158,0.12), transparent 28%),
+    linear-gradient(180deg, #021428 0%, #E6E4DE 34%, #E6E4DE 100%);
 }
 .collection-hero {
   min-height: 100vh;
@@ -186,7 +187,7 @@ nav.scrolled {
   width: 520px;
   height: 520px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,123,46,0.22) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(111,142,158,0.22) 0%, transparent 68%);
   pointer-events: none;
 }
 .collection-hero::after {
@@ -197,7 +198,7 @@ nav.scrolled {
   width: 460px;
   height: 460px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,123,46,0.09) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(111,142,158,0.09) 0%, transparent 70%);
   pointer-events: none;
 }
 .collection-kicker {
@@ -217,7 +218,7 @@ nav.scrolled {
   background: var(--amber);
 }
 .collection-page-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Noto Serif Display', serif;
   font-size: clamp(4rem, 7vw, 7.4rem);
   line-height: 0.92;
   font-weight: 300;
@@ -277,7 +278,7 @@ nav.scrolled {
   border-radius: 24px;
   padding: 16px;
   background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(201,123,46,0.14);
+  border: 1px solid rgba(111,142,158,0.14);
   backdrop-filter: blur(12px);
   box-shadow: 0 18px 50px rgba(0,0,0,0.18);
   display: flex;
@@ -294,15 +295,15 @@ nav.scrolled {
 .collection-card .img-placeholder {
   min-height: 240px;
   height: 100%;
-  color: rgba(232,168,76,0.62);
-  border-color: rgba(201,123,46,0.22);
+  color: rgba(111,142,158,0.62);
+  border-color: rgba(111,142,158,0.22);
   background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.015) 100%);
 }
 .collection-card.large .img-placeholder {
   background:
-    radial-gradient(circle at 50% 45%, rgba(201,123,46,0.38), transparent 42%),
+    radial-gradient(circle at 50% 45%, rgba(111,142,158,0.38), transparent 42%),
     linear-gradient(145deg, #0e0a08 0%, #1f1611 48%, #120d0a 100%);
-  border-color: rgba(201,123,46,0.28);
+  border-color: rgba(111,142,158,0.28);
   color: rgba(255,255,255,0.72);
 }
 .collection-card.large .img-placeholder svg { opacity: 0.7; }
@@ -343,7 +344,7 @@ nav.scrolled {
   margin-bottom: 38px;
 }
 .collection-section-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Noto Serif Display', serif;
   font-size: clamp(2.4rem, 4vw, 4rem);
   font-weight: 300;
   line-height: 1.05;
@@ -374,7 +375,7 @@ nav.scrolled {
   border: none;
   border-bottom: 1px solid rgba(0,0,0,0.06);
   border-radius: 24px 24px 0 0;
-  color: rgba(201,123,46,0.56);
+  color: rgba(111,142,158,0.56);
 }
 .collection-product-body {
   padding: 18px 18px 20px;
@@ -401,14 +402,14 @@ nav.scrolled {
   flex: none;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(201,123,46,0.1);
+  background: rgba(111,142,158,0.1);
   color: var(--amber);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 .collection-product-price {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Noto Serif Display', serif;
   font-size: 1.8rem;
   font-weight: 300;
   color: var(--text-dark);
@@ -425,7 +426,7 @@ nav.scrolled {
   background: linear-gradient(135deg, #1a1511 0%, #201812 100%);
   border-radius: 28px;
   padding: 34px 40px;
-  border: 1px solid rgba(201,123,46,0.16);
+  border: 1px solid rgba(111,142,158,0.16);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
@@ -467,12 +468,12 @@ nav.scrolled {
   justify-content: flex-end;
 }
 .catalog-chip {
-  border: 1px solid rgba(201,123,46,0.18);
+  border: 1px solid rgba(111,142,158,0.18);
   background: rgba(255,255,255,0.7);
   color: var(--text-dark);
   padding: 10px 16px;
   border-radius: 999px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Noto Serif Display', serif;
   font-size: 0.8rem;
   letter-spacing: 0.02em;
   cursor: pointer;
@@ -480,7 +481,7 @@ nav.scrolled {
 }
 .catalog-chip:hover {
   transform: translateY(-1px);
-  border-color: rgba(201,123,46,0.45);
+  border-color: rgba(111,142,158,0.45);
 }
 .catalog-chip.active {
   background: var(--dark);
@@ -491,12 +492,12 @@ nav.scrolled {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid rgba(201,123,46,0.35);
-  background: rgba(201,123,46,0.1);
+  border: 1px solid rgba(111,142,158,0.35);
+  background: rgba(111,142,158,0.1);
   color: var(--text-dark);
   padding: 10px 16px;
   border-radius: 999px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Noto Serif Display', serif;
   font-size: 0.8rem;
   letter-spacing: 0.02em;
   cursor: pointer;
@@ -504,8 +505,8 @@ nav.scrolled {
 }
 .catalog-toggle:hover {
   transform: translateY(-1px);
-  border-color: rgba(201,123,46,0.55);
-  background: rgba(201,123,46,0.18);
+  border-color: rgba(111,142,158,0.55);
+  background: rgba(111,142,158,0.18);
 }
 .catalog-toggle[aria-pressed="true"] {
   background: var(--dark);
@@ -559,7 +560,7 @@ nav.scrolled {
   gap: 6px;
   padding: 6px 9px;
   border-radius: 999px;
-  background: rgba(201,123,46,0.08);
+  background: rgba(111,142,158,0.08);
   color: var(--text-muted);
   font-size: 0.72rem;
 }
@@ -568,7 +569,7 @@ nav.scrolled {
   border: none;
   border-bottom: 1px solid rgba(0,0,0,0.06);
   border-radius: 26px 26px 0 0;
-  color: rgba(201,123,46,0.58);
+  color: rgba(111,142,158,0.58);
 }
 .catalog-add-btn {
   position: absolute;
@@ -621,7 +622,7 @@ nav.scrolled {
   flex: none;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(201,123,46,0.1);
+  background: rgba(111,142,158,0.1);
   color: var(--amber);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
@@ -634,7 +635,7 @@ nav.scrolled {
   margin-top: auto;
 }
 .catalog-product-price {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Noto Serif Display', serif;
   font-size: 1.8rem;
   font-weight: 300;
   color: var(--text-dark);
@@ -665,12 +666,12 @@ nav.scrolled {
   letter-spacing: 0.04em;
   border: 1px solid rgba(15,13,11,0.12);
   cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Noto Serif Display', serif;
   transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 .catalog-more:hover {
   transform: translateY(-1px);
-  border-color: rgba(201,123,46,0.4);
+  border-color: rgba(111,142,158,0.4);
   background: #fff;
   color: var(--text-dark);
 }
@@ -686,7 +687,7 @@ nav.scrolled {
   padding: 14px 24px;
   border-radius: 50px;
   font-size: 0.85rem;
-  border: 1px solid rgba(201,123,46,0.4);
+  border: 1px solid rgba(111,142,158,0.4);
   z-index: 9999;
   transform: translateY(80px);
   opacity: 0;
@@ -753,7 +754,7 @@ footer {
   text-align: center;
 }
 .loader-logo {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Noto Serif Display', serif;
   font-size: 2.5rem; color: #fff; margin-bottom: 24px;
   animation: pulse 1.5s ease-in-out infinite;
 }

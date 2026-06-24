@@ -1,17 +1,17 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #f5f0e8;
-  --dark: #141210;
-  --dark2: #1e1a16;
-  --amber: #c97b2e;
-  --amber-light: #e8a84c;
-  --amber-glow: #f0c060;
-  --cream: #faf7f2;
-  --text-dark: #0f0d0b;
-  --text-muted: #7a6e60;
-  --glass: rgba(255,255,255,0.06);
-  --glass-border: rgba(255,255,255,0.12);
+  --bg: #EFE8D5; /* warm light background */
+  --dark: #0F0A07; /* deep charcoal for hero */
+  --dark2: #2C1E14; /* rich espresso secondary */
+  --amber: #B8860B; /* dark gold accent */
+  --amber-light: #D4AF37; /* lighter gold for gradients */
+  --amber-glow: #FFD700; /* bright gold glow */
+  --cream: #FAF5E4; /* off‑white cream */
+  --text-dark: #2B2B2B; /* deep dark text for contrast */
+  --text-muted: #6C757D; /* muted gray */
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
   --radius: 20px;
   --radius-sm: 12px;
 }
@@ -19,7 +19,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Noto Serif Display", serif;
   background: var(--bg);
   color: var(--text-dark);
   overflow-x: hidden;
@@ -42,7 +42,7 @@ body {
   position: fixed;
   width: 28px;
   height: 28px;
-  border: 1.5px solid rgba(201,123,46,0.6);
+  border: 1.5px solid rgba(111,142,158,0.6);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -59,7 +59,7 @@ body:has(a:hover) #cursor-ring,
 body:has(button:hover) #cursor-ring {
   width: 40px;
   height: 40px;
-  border-color: rgba(201,123,46,0.9);
+  border-color: rgba(111,142,158,0.9);
   background: transparent;
 }
 body.cursor-active #cursor,
@@ -102,7 +102,7 @@ nav.scrolled {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: 1.5rem;
   font-weight: 600;
   color: #fff;
@@ -178,8 +178,8 @@ nav.scrolled {
 /* -- HERO -- */
 .checkout-page {
   background:
-    radial-gradient(circle at 20% 15%, rgba(201,123,46,0.2), transparent 32%),
-    linear-gradient(180deg, #16110d 0%, #f5f0e8 40%, #f5f0e8 100%);
+    radial-gradient(circle at 20% 15%, rgba(111,142,158,0.2), transparent 32%),
+    linear-gradient(180deg, #021428 0%, #E6E4DE 40%, #E6E4DE 100%);
 }
 .checkout-hero {
   min-height: 52vh;
@@ -194,7 +194,7 @@ nav.scrolled {
   width: 620px;
   height: 620px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,123,46,0.25) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(111,142,158,0.25) 0%, transparent 70%);
   top: 50%;
   left: 60%;
   transform: translate(-50%, -50%);
@@ -222,7 +222,7 @@ nav.scrolled {
   background: var(--amber);
 }
 .hero-title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 300;
   color: #fff;
@@ -256,7 +256,7 @@ nav.scrolled {
   margin-bottom: 10px;
 }
 .section-title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   font-weight: 300;
   color: var(--text-dark);
@@ -273,7 +273,7 @@ nav.scrolled {
   padding: 24px;
   border-radius: 20px;
   background: rgba(255,255,255,0.8);
-  border: 1px dashed rgba(201,123,46,0.3);
+  border: 1px dashed rgba(111,142,158,0.3);
   color: var(--text-muted);
   margin-bottom: 24px;
 }
@@ -300,13 +300,13 @@ nav.scrolled {
   border: 1px solid rgba(0,0,0,0.08);
   padding: 12px 14px;
   font-size: 0.9rem;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Noto Serif Display", serif;
   background: #fff;
 }
 .input-group input:focus {
   outline: none;
-  border-color: rgba(201,123,46,0.5);
-  box-shadow: 0 0 0 3px rgba(201,123,46,0.12);
+  border-color: rgba(111,142,158,0.5);
+  box-shadow: 0 0 0 3px rgba(111,142,158,0.12);
 }
 .span-2 { grid-column: span 2; }
 
@@ -351,7 +351,7 @@ nav.scrolled {
   cursor: pointer;
   background: var(--dark);
   transition: border-color 0.3s, background 0.3s;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Noto Serif Display", serif;
 }
 .btn-primary:hover {
   border-color: var(--amber);
@@ -383,7 +383,7 @@ nav.scrolled {
   letter-spacing: 0.04em;
   border: none;
   cursor: pointer;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Noto Serif Display", serif;
   transition: background 0.3s, transform 0.2s;
   width: 100%;
 }
@@ -514,7 +514,7 @@ footer {
 #loader.gone { opacity: 0; visibility: hidden; }
 .loader-inner { text-align: center; }
 .loader-logo {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Noto Serif Display", serif;
   font-size: 2.5rem;
   color: #fff;
   margin-bottom: 24px;

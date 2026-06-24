@@ -1,1 +1,14 @@
 .vscode/
+
+.DS_Store
+
+.claude
+.gemini
+.impeccable
+
+fix.js
+
+DESIGN.md
+PRODUCT.md
+
+lighthouse-report.json
