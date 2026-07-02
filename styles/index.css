@@ -63,7 +63,7 @@ body {
   position: fixed;
   width: 28px;
   height: 28px;
-  border: 1.5px solid rgb(107, 186, 223);
+  border: 1.5px solid var(--amber);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -85,7 +85,7 @@ body:has(a:hover) #cursor-ring,
 body:has(button:hover) #cursor-ring {
   width: 40px;
   height: 40px;
-  border-color: rgba(111,142,158, 0.9);
+  border-color: var(--amber-glow);
   background: transparent;
 }
 body.cursor-active #cursor,
@@ -182,7 +182,7 @@ body:has(a:active) #cursor-ring {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(111,142,158, 0.3) 0%,
+    var(--amber-light) 0%,
     rgba(30, 26, 22, 0.6) 60%,
     transparent 100%
   );
@@ -410,14 +410,14 @@ body:has(a:active) #cursor-ring {
     rgba(255, 255, 255, 0.05) 0%,
     rgba(255, 255, 255, 0.02) 100%
   );
-  border: 2px dashed rgba(111,142,158, 0.3);
+  border: 2px dashed rgba(138, 123, 37, 0.2);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  color: rgba(111,142,158, 0.5);
+  color: rgba(138, 123, 37, 0.2);
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -443,7 +443,7 @@ body:has(a:active) #cursor-ring {
 .hero-img-wrap .img-placeholder {
   width: 100%;
   height: 100%;
-  border-color: rgba(111,142,158, 0.2);
+  border-color: rgba(138, 123, 37, 0.2);
 }
 
 /* ── LOGO TICKER ── */
@@ -461,6 +461,7 @@ body:has(a:active) #cursor-ring {
   margin-bottom: 28px;
 }
 .ticker-track-wrap {
+  height: 50px;
   overflow: hidden;
   position: relative;
   mask-image: linear-gradient(
@@ -485,7 +486,7 @@ body:has(a:active) #cursor-ring {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 30px;
+  padding: 12px 30px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50px;
   background: var(--cream);
@@ -505,7 +506,7 @@ body:has(a:active) #cursor-ring {
   position: relative;
 }
 .ticker-logo:hover {
-  transform: scale(1.18) translateY(-4px);
+  transform: scale(1.15) translateX(-5px);
   box-shadow: 0 12px 40px rgba(111,142,158, 0.2);
   color: var(--amber);
   border-color: var(--amber-light);
@@ -791,7 +792,7 @@ body:has(a:active) #cursor-ring {
   font-family: "Noto Serif Display", serif;
   font-size: 3rem;
   font-weight: 300;
-  color: var(--amber);
+  color: var(--dark);
 }
 .btn-dark {
   display: inline-flex;
