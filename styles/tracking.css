@@ -42,7 +42,7 @@ body {
   position: fixed;
   width: 28px;
   height: 28px;
-  border: 1.5px solid rgba(111,142,158,0.6);
+  border: 1.5px solid var(--amber);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -59,7 +59,7 @@ body:has(a:hover) #cursor-ring,
 body:has(button:hover) #cursor-ring {
   width: 40px;
   height: 40px;
-  border-color: rgba(111,142,158,0.9);
+  border-color: var(--amber-glow);
   background: transparent;
 }
 body.cursor-active #cursor,
