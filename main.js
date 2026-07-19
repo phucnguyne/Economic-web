@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
 if (cursor && ring) {
-  document.addEventListener('pendantmove', e => {
+  document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
     setTimeout(() => {
@@ -83,8 +83,8 @@ if (track) {
     const el = document.createElement('div');
     el.className = 'ticker-logo';
     el.innerHTML = `<span class="logo-mark">${l.mark}</span>${l.name}`;
-    el.addEventListener('pendantenter', () => track.style.animationPlayState = 'paused');
-    el.addEventListener('pendantleave', () => track.style.animationPlayState = 'running');
+    el.addEventListener('mouseenter', () => track.style.animationPlayState = 'paused');
+    el.addEventListener('mouseleave', () => track.style.animationPlayState = 'running');
     track.appendChild(el);
   });
 }
@@ -97,17 +97,160 @@ function showToast(msg) {
   if (!toast || !toastMsg) {
     return;
   }
-  toastMsg.textContent = msg;
+  toastMsg.innerHTML = msg;
   toast.style.transform = 'translateY(0)';
   toast.style.opacity = '1';
+  toast.style.pointerEvents = 'auto';
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => {
     toast.style.transform = 'translateY(80px)';
     toast.style.opacity = '0';
-  }, 2800);
+    toast.style.pointerEvents = 'none';
+  }, 5000);
 }
-function addToCart(name) { showToast(`"${name}" added to cart ✓`); }
+// ── CART STORAGE ── (shared with cart.js via same localStorage key)
+const CART_KEY = 'libra_lumina_cart';
+const readCart = () => {
+  try { const raw = localStorage.getItem(CART_KEY); const parsed = raw ? JSON.parse(raw) : []; return Array.isArray(parsed) ? parsed : []; } catch { return []; }
+};
+const saveCart = cart => { localStorage.setItem(CART_KEY, JSON.stringify(cart)); };
+window.getCartCount = () => readCart().reduce((sum, item) => sum + item.quantity, 0);
+
+function addToCart(triggerOrName, maybeName) {
+  // Back-compat: addToCart('Product Name') still works with no color context.
+  const hasTrigger = triggerOrName instanceof Element;
+  const trigger = hasTrigger ? triggerOrName : null;
+  const name = hasTrigger ? maybeName : triggerOrName;
+  const card = trigger ? trigger.closest('[data-product-card]') : null;
+  const selectedSwatch = card ? card.querySelector('.color-swatch[aria-pressed="true"]') : null;
+  const colorName = selectedSwatch ? selectedSwatch.dataset.name : null;
+
+  // Actually save to localStorage cart
+  const productId = name.toLowerCase().replace(/\s+/g, '-');
+  const cart = readCart();
+  const existing = cart.find(item => item.id === productId);
+  if (existing) { existing.quantity += 1; } else { cart.push({ id: productId, quantity: 1 }); }
+  saveCart(cart);
+
+  const toastHTML = `
+    <span>${colorName ? `"${name}" — ${colorName} added to cart ✓` : `"${name}" added to cart ✓`}</span>
+    <span class="toast-actions">
+      <a href="cart.html" class="toast-btn">View Cart</a>
+      <a href="checkout.html" class="toast-btn toast-btn--primary">Checkout</a>
+    </span>
+  `;
+  showToast(toastHTML);
+}
 function showCartToast() { showToast('Opening collection...'); }
+
+// ── COLOR SWATCHES ──
+// A small palette of lamp finishes/glass tones drawn from the brand's own
+// tokens, so every swatch reads as "a real material option" rather than an
+// arbitrary rainbow bolted onto the cards.
+const COLOR_PALETTE = [
+  { name: 'Amber Glass', hex: '#B8860B' },
+  { name: 'Honey Glass', hex: '#D4AF37' },
+  { name: 'Smoked Grey', hex: '#4A4A4A' },
+  { name: 'Frosted Opal', hex: '#F5F0E6' },
+  { name: 'Espresso Brass', hex: '#2C1E14' },
+  { name: 'Warm Ivory', hex: '#EFE8D5' },
+];
+
+function colorsForIndex(index) {
+  const a = COLOR_PALETTE[index % COLOR_PALETTE.length];
+  const b = COLOR_PALETTE[(index + 2) % COLOR_PALETTE.length];
+  const c = COLOR_PALETTE[(index + 4) % COLOR_PALETTE.length];
+  return [a, b, c];
+}
+
+function renderSwatchesHTML(colors, { light = false } = {}) {
+  const swatchClass = light ? 'color-swatch color-swatch--light' : 'color-swatch';
+  const buttons = colors.map((c, i) => `
+    <button type="button" class="${swatchClass}" style="--swatch:${c.hex}"
+      data-name="${c.name}" aria-label="${c.name}" aria-pressed="${i === 0 ? 'true' : 'false'}"></button>
+  `).join('');
+  return `
+    <div class="color-field${light ? ' color-field--light' : ''}">
+      <div class="color-field-top">
+        <span class="color-field-label">Color</span>
+        <span class="color-field-value">${colors[0].name}</span>
+      </div>
+      <div class="color-swatches">${buttons}</div>
+    </div>
+  `;
+}
+
+// One delegated listener handles every swatch on every page (hero card,
+// homepage tiles, spotlight, and the JS-rendered catalog grid alike).
+document.addEventListener('click', e => {
+  const swatch = e.target.closest('.color-swatch');
+  if (!swatch) return;
+  const group = swatch.closest('.color-swatches');
+  const field = swatch.closest('.color-field');
+  if (!group) return;
+  group.querySelectorAll('.color-swatch').forEach(s => s.setAttribute('aria-pressed', 'false'));
+  swatch.setAttribute('aria-pressed', 'true');
+  const valueEl = field ? field.querySelector('.color-field-value') : null;
+  if (valueEl) valueEl.textContent = swatch.dataset.name;
+});
+
+// ── HAMBURGER FAB + PANEL ──
+const hamburgerFab = document.getElementById('hamburgerFab');
+const hamburgerPanel = document.getElementById('hamburgerPanel');
+const hamburgerOverlay = document.getElementById('hamburgerOverlay');
+const hamburgerPanelClose = document.getElementById('hamburgerPanelClose');
+
+function openHamburgerPanel() {
+  if (!hamburgerPanel || !hamburgerOverlay) return;
+  hamburgerPanel.setAttribute('aria-hidden', 'false');
+  hamburgerPanel.classList.add('is-open');
+  hamburgerOverlay.setAttribute('aria-hidden', 'false');
+  hamburgerOverlay.classList.add('is-visible');
+  if (hamburgerFab) {
+    hamburgerFab.setAttribute('aria-pressed', 'true');
+    const icon = hamburgerFab.querySelector('.hamburger-fab-icon');
+    if (icon) icon.textContent = '✕';
+  }
+  document.body.style.overflow = 'hidden';
+}
+
+function closeHamburgerPanel() {
+  if (!hamburgerPanel || !hamburgerOverlay) return;
+  hamburgerPanel.setAttribute('aria-hidden', 'true');
+  hamburgerPanel.classList.remove('is-open');
+  hamburgerOverlay.setAttribute('aria-hidden', 'true');
+  hamburgerOverlay.classList.remove('is-visible');
+  if (hamburgerFab) {
+    hamburgerFab.setAttribute('aria-pressed', 'false');
+    const icon = hamburgerFab.querySelector('.hamburger-fab-icon');
+    if (icon) icon.textContent = '☰';
+  }
+  document.body.style.overflow = '';
+}
+
+function toggleHamburgerPanel() {
+  if (hamburgerPanel && hamburgerPanel.classList.contains('is-open')) {
+    closeHamburgerPanel();
+  } else {
+    openHamburgerPanel();
+  }
+}
+
+if (hamburgerFab) {
+  hamburgerFab.addEventListener('click', toggleHamburgerPanel);
+}
+if (hamburgerOverlay) {
+  hamburgerOverlay.addEventListener('click', closeHamburgerPanel);
+}
+if (hamburgerPanelClose) {
+  hamburgerPanelClose.addEventListener('click', closeHamburgerPanel);
+}
+// Close on Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && hamburgerPanel && hamburgerPanel.classList.contains('is-open')) {
+    closeHamburgerPanel();
+  }
+});
 
 // ── SMOOTH SCROLL ──
 function scrollTo(sel) {
@@ -177,7 +320,7 @@ if (catalogGrid) {
     { name: 'Fable pendant', category: 'pendant', price: 265000, badge: 'Eco', description: 'Gentle hanging light for layered rooms.', views: 12630, likes: 820, bought: 173 },
     { name: 'Elm table Lamp', category: 'table', price: 220000, badge: 'New', description: 'Compact glow for calm nightstands.', views: 10110, likes: 530, bought: 99 },
     { name: 'Boreal floor Lamp', category: 'floor', price: 590000, badge: 'Top pick', description: 'Tall Lamp with a gallery-like silhouette.', views: 18940, likes: 1410, bought: 337 },
-  ];
+  ].map((product, index) => ({ ...product, colors: colorsForIndex(index) }));
   const pageSize = 12;
   let activeFilter = 'all';
   let visibleCount = pageSize;
@@ -223,13 +366,13 @@ if (catalogGrid) {
       const cardClasses = ['catalog-product'];
 
       return `
-        <article class="${cardClasses.join(' ')} reveal visible">
+        <article class="${cardClasses.join(' ')} reveal visible" data-product-card>
           <div class="catalog-media">
-            <div class="img-placeholder">
+            <div class="img-placeholder" role="img" aria-label="${product.name} product image" tabindex="0">
               <svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              Image placeholder
+              Product image
             </div>
-            <button class="catalog-add-btn" type="button" aria-label="Add ${product.name} to cart" onclick="addToCart('${product.name}')">
+            <button class="catalog-add-btn" type="button" aria-label="Add ${product.name} to cart" onclick="addToCart(this, '${product.name}')">
               <svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
           </div>
@@ -246,6 +389,7 @@ if (catalogGrid) {
               <span>${product.likes.toLocaleString()} likes</span>
               <span>${product.bought} bought</span>
             </div>
+            ${renderSwatchesHTML(product.colors, { light: true })}
             <div class="catalog-product-price-row">
               <div class="catalog-product-price">${product.price.toLocaleString('vi-VN')} ₫</div>
               <a class="catalog-product-link" href="index.html#collection">View</a>

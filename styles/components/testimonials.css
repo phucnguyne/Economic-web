@@ -1,0 +1,109 @@
+/* ── TESTIMONIALS ── */
+/* ── TESTIMONIALS ── */
+.testimonials {
+  padding: 100px 80px;
+  background: var(--cream);
+  overflow: hidden;
+}
+.testimonials .section-header {
+  margin-bottom: 28px;
+  align-items: center;
+}
+.review-controls {
+  display: flex;
+  gap: 10px;
+}
+.review-nav {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--amber-rgb), 0.22);
+  background: #fff;
+  color: var(--text-dark);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+.review-nav:hover {
+  transform: translateY(-1px);
+  border-color: var(--amber);
+  background: var(--cream);
+}
+.testi-viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 8px;
+}
+.testi-viewport::-webkit-scrollbar {
+  display: none;
+}
+.testi-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(320px, 1fr);
+  gap: 24px;
+}
+.testi-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius);
+  padding: 32px;
+  transition:
+    box-shadow 0.3s,
+    transform 0.3s;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  scroll-snap-align: start;
+}
+.testi-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+.testi-stars {
+  color: var(--amber);
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+.testi-text {
+  font-size: 0.94rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-style: italic;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.testi-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--amber), var(--amber-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+}
+.testi-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.testi-loc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}

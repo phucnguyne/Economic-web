@@ -1,0 +1,85 @@
+/* ============================================================
+   COLOR SWATCH — shared across index.html and collection.html
+   Selecting a tone lights the swatch up like the lamp it
+   represents: a soft radial glow keyed to --swatch, echoing
+   the same glow language used by --amber-glow elsewhere.
+============================================================ */
+
+.color-field {
+  margin: 4px 0 16px;
+}
+.color-field-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 9px;
+}
+.color-field-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+.color-field-value {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+}
+
+.color-swatches {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.color-swatch {
+  --swatch: #B8860B;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--swatch);
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 0 0 0 var(--swatch);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s ease, border-color 0.25s ease;
+}
+.color-swatch:hover {
+  transform: translateY(-2px) scale(1.12);
+}
+.color-swatch:focus-visible {
+  outline: 2px solid var(--amber-glow, #FFD700);
+  outline-offset: 3px;
+}
+.color-swatch[aria-pressed="true"] {
+  border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12), 0 0 14px 3px var(--swatch);
+  animation: swatchGlow 2.4s ease-in-out infinite;
+}
+
+@keyframes swatchGlow {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12), 0 0 10px 2px var(--swatch); }
+  50% { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12), 0 0 18px 5px var(--swatch); }
+}
+
+/* Light-background variant — product tiles, catalog cards, spotlight:
+   sit on var(--cream), so borders/labels flip to dark ink instead of white. */
+.color-field--light .color-field-label { color: var(--text-muted); }
+.color-field--light .color-field-value { color: var(--text-dark); }
+.color-swatch--light {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+.color-swatch--light[aria-pressed="true"] {
+  border-color: var(--dark);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06), 0 0 14px 3px var(--swatch);
+}
+@keyframes swatchGlowLight {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06), 0 0 8px 2px var(--swatch); }
+  50% { box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06), 0 0 16px 4px var(--swatch); }
+}
+.color-swatch--light[aria-pressed="true"] {
+  animation: swatchGlowLight 2.4s ease-in-out infinite;
+}

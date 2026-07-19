@@ -1,0 +1,53 @@
+/* ── CTA BANNER ── */
+/* ── CTA BANNER ── */
+.cta-banner {
+  margin: 0 80px 80px;
+  background: var(--dark);
+  border-radius: var(--radius);
+  padding: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+.cta-bg {
+  position: absolute;
+  right: -100px;
+  top: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(var(--amber-rgb), 0.15) 0%,
+    transparent 70%
+  );
+}
+.cta-title {
+  font-family: "Noto Serif Display", serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.15;
+  max-width: 480px;
+}
+.cta-title em {
+  color: var(--amber-light);
+  font-style: italic;
+}
+.cta-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+.cta-sub {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-align: right;
+  max-width: 220px;
+  line-height: 1.6;
+}

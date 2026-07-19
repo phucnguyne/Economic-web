@@ -1,0 +1,42 @@
+/* ── FEATURES STRIP ── */
+/* ── FEATURES STRIP ── */
+.features-strip {
+  display: flex;
+  gap: 0;
+  background: var(--dark);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 0 80px;
+}
+.feat-item {
+  flex: 1;
+  padding: 48px 40px;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  transition: background 0.3s;
+  cursor: default;
+}
+.feat-item:last-child {
+  border-right: none;
+}
+.feat-item:hover {
+  background: rgba(var(--amber-rgb), 0.07);
+}
+.feat-num {
+  font-family: "Noto Serif Display", serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: rgba(var(--amber-rgb), 0.2);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.feat-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.feat-desc {
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.4);
+}

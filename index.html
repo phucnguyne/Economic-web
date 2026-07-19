@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/components/color-swatch.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="manifest" href="manifest.json">
 </head>
@@ -58,10 +59,12 @@
 
   <!-- Center image placeholder -->
   <div class="hero-img-wrap">
-    <div class="img-placeholder">
+    <a href="collection.html" aria-label="View Aura Glass Lamp in collection" class="img-placeholder-link">
+    <div class="img-placeholder" role="img" aria-label="Aura Glass Lamp — hero product image" tabindex="0">
       <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
       Add hero image here
     </div>
+    </a>
   </div>
 
   <div class="hero-content">
@@ -85,7 +88,7 @@
 
   <!-- Floating product card -->
   <div class="hero-product-card">
-    <div class="product-card-inner">
+    <div class="product-card-inner" data-product-card>
       <div class="pc-bestseller"><span class="pc-bestseller-dot"></span>Bestseller</div>
       <div class="pc-name">Aura Glass Lamp</div>
       <div class="pc-detail">
@@ -94,8 +97,19 @@
         </div>
         <div><div style="color:rgba(255,255,255,0.8);font-size:0.8rem">24 Hours</div><div>Electricity</div></div>
       </div>
+      <div class="color-field">
+        <div class="color-field-top">
+          <span class="color-field-label">Color</span>
+          <span class="color-field-value">Amber Glass</span>
+        </div>
+        <div class="color-swatches">
+          <button type="button" class="color-swatch" style="--swatch:#B8860B" data-name="Amber Glass" aria-label="Amber Glass" aria-pressed="true"></button>
+          <button type="button" class="color-swatch" style="--swatch:#4A4A4A" data-name="Smoked Grey" aria-label="Smoked Grey" aria-pressed="false"></button>
+          <button type="button" class="color-swatch" style="--swatch:#2C1E14" data-name="Espresso Brass" aria-label="Espresso Brass" aria-pressed="false"></button>
+        </div>
+      </div>
       <div class="pc-price">$630.00</div>
-      <div class="pc-add" onclick="addToCart('aura-glass-lamp')">
+      <div class="pc-add" onclick="addToCart(this, 'Aura Glass Lamp')">
         <span>Add to cart</span>
         <div class="pc-add-btn">
           <svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -133,57 +147,84 @@
   </div>
 
   <div class="products-grid">
-    <div class="product-tile reveal reveal-delay-1">
+    <div class="product-tile reveal reveal-delay-1" data-product-card>
       <div class="pt-img-wrap">
         <div class="pt-img">
-          <div class="img-placeholder">
+          <div class="img-placeholder" role="img" aria-label="Velvet Shine Lamp product image" tabindex="0">
             <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             Lamp image
           </div>
         </div>
-        <button class="pt-add-btn" onclick="addToCart('velvet-shine-lamp')">
+        <button class="pt-add-btn" onclick="addToCart(this, 'Velvet Shine Lamp')">
           <svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
       </div>
       <div class="pt-info">
-        <div><div class="pt-name">Velvet Shine Lamp</div><div class="pt-price">$240.00</div></div>
-        <span class="pt-tag">New</span>
+        <div class="pt-info-top">
+          <div><div class="pt-name">Velvet Shine Lamp</div><div class="pt-price">$240.00</div></div>
+          <span class="pt-tag">New</span>
+        </div>
+        <div class="color-field color-field--light color-field--compact">
+          <div class="color-swatches">
+            <button type="button" class="color-swatch color-swatch--light" style="--swatch:#D4AF37" data-name="Honey Glass" aria-label="Honey Glass" aria-pressed="true"></button>
+            <button type="button" class="color-swatch color-swatch--light" style="--swatch:#F5F0E6" data-name="Frosted Opal" aria-label="Frosted Opal" aria-pressed="false"></button>
+            <button type="button" class="color-swatch color-swatch--light" style="--swatch:#EFE8D5" data-name="Warm Ivory" aria-label="Warm Ivory" aria-pressed="false"></button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="product-tile reveal reveal-delay-2">
+    <div class="product-tile reveal reveal-delay-2" data-product-card>
       <div class="pt-img-wrap">
         <div class="pt-img">
-          <div class="img-placeholder">
+          <div class="img-placeholder" role="img" aria-label="Lumiere Luxe Lamp product image" tabindex="0">
             <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             Lamp image
           </div>
         </div>
-        <button class="pt-add-btn" onclick="addToCart('lumiere-luxe-lamp')">
+        <button class="pt-add-btn" onclick="addToCart(this, 'Lumiere Luxe Lamp')">
           <svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
       </div>
       <div class="pt-info">
-        <div><div class="pt-name">Lumiere Luxe Lamp</div><div class="pt-price">$210.00</div></div>
-        <span class="pt-tag">Bestseller</span>
+        <div class="pt-info-top">
+          <div><div class="pt-name">Lumiere Luxe Lamp</div><div class="pt-price">$210.00</div></div>
+          <span class="pt-tag">Bestseller</span>
+        </div>
+        <div class="color-field color-field--light color-field--compact">
+          <div class="color-swatches">
+            <button type="button" class="color-swatch color-swatch--light" style="--swatch:#4A4A4A" data-name="Smoked Grey" aria-label="Smoked Grey" aria-pressed="true"></button>
+            <button type="button" class="color-swatch color-swatch--light" style="--swatch:#2C1E14" data-name="Espresso Brass" aria-label="Espresso Brass" aria-pressed="false"></button>
+            <button type="button" class="color-swatch color-swatch--light" style="--swatch:#B8860B" data-name="Amber Glass" aria-label="Amber Glass" aria-pressed="false"></button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="product-tile reveal reveal-delay-3">
+    <div class="product-tile reveal reveal-delay-3" data-product-card>
       <div class="pt-img-wrap">
         <div class="pt-img">
-          <div class="img-placeholder">
+          <div class="img-placeholder" role="img" aria-label="Zenith Luxe Lamp product image" tabindex="0">
             <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             Lamp image
           </div>
         </div>
-        <button class="pt-add-btn" onclick="addToCart('zenith-luxe-lamp')">
+        <button class="pt-add-btn" onclick="addToCart(this, 'Zenith Luxe Lamp')">
           <svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
       </div>
       <div class="pt-info">
-        <div><div class="pt-name">Zenith Luxe Lamp</div><div class="pt-price">$180.00</div></div>
-        <span class="pt-tag">Sale</span>
+        <div class="pt-info-top">
+          <div><div class="pt-name">Zenith Luxe Lamp</div><div class="pt-price">$180.00</div></div>
+          <span class="pt-tag">Sale</span>
+        </div>
+        <div class="color-field color-field--light color-field--compact">
+          <div class="color-swatches">
+            <button type="button" class="color-swatch color-swatch--light" style="--swatch:#F5F0E6" data-name="Frosted Opal" aria-label="Frosted Opal" aria-pressed="true"></button>
+            <button type="button" class="color-swatch color-swatch--light" style="--swatch:#EFE8D5" data-name="Warm Ivory" aria-label="Warm Ivory" aria-pressed="false"></button>
+            <button type="button" class="color-swatch color-swatch--light" style="--swatch:#D4AF37" data-name="Honey Glass" aria-label="Honey Glass" aria-pressed="false"></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -214,15 +255,16 @@
 </div>
 
 <!-- SPOTLIGHT -->
-<section class="spotlight" id="spotlight">
-  <div class="spotlight-img reveal">
-    <div class="img-placeholder" style="height:100%">
+<section class="spotlight" id="spotlight">    <div class="spotlight-img reveal">
+    <a href="collection.html" aria-label="View Aura Glass Collection" class="img-placeholder-link">
+    <div class="img-placeholder" role="img" aria-label="Aura Glass collection featured image" tabindex="0" style="height:100%">
       <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
       Featured product image
     </div>
+    </a>
     <div class="spotlight-badge">⚡ Bestseller 2025</div>
   </div>
-  <div class="spotlight-info reveal reveal-delay-1">
+  <div class="spotlight-info reveal reveal-delay-1" data-product-card>
     <div class="section-eyebrow">Featured Product</div>
     <h2 class="spotlight-name">Aura Glass<br>Collection</h2>
     <p class="spotlight-desc">A masterpiece of ambient lighting. The Aura Glass lamp wraps warm filament glow inside hand-blown borosilicate glass — creating a living sculpture that transforms any room it inhabits.</p>
@@ -232,9 +274,22 @@
       <div class="spec-item"><div class="spec-label">Lifespan</div><div class="spec-value">25,000 hrs</div></div>
       <div class="spec-item"><div class="spec-label">Warranty</div><div class="spec-value">5 Years</div></div>
     </div>
+    <div class="color-field color-field--light">
+      <div class="color-field-top">
+        <span class="color-field-label">Glass tone</span>
+        <span class="color-field-value">Amber Glass</span>
+      </div>
+      <div class="color-swatches">
+        <button type="button" class="color-swatch color-swatch--light" style="--swatch:#B8860B" data-name="Amber Glass" aria-label="Amber Glass" aria-pressed="true"></button>
+        <button type="button" class="color-swatch color-swatch--light" style="--swatch:#D4AF37" data-name="Honey Glass" aria-label="Honey Glass" aria-pressed="false"></button>
+        <button type="button" class="color-swatch color-swatch--light" style="--swatch:#4A4A4A" data-name="Smoked Grey" aria-label="Smoked Grey" aria-pressed="false"></button>
+        <button type="button" class="color-swatch color-swatch--light" style="--swatch:#F5F0E6" data-name="Frosted Opal" aria-label="Frosted Opal" aria-pressed="false"></button>
+        <button type="button" class="color-swatch color-swatch--light" style="--swatch:#2C1E14" data-name="Espresso Brass" aria-label="Espresso Brass" aria-pressed="false"></button>
+      </div>
+    </div>
     <div class="price-row">
       <div class="big-price">$630.00</div>
-      <button class="btn-dark" onclick="addToCart('aura-glass-lamp')">
+      <button class="btn-dark" onclick="addToCart(this, 'Aura Glass Lamp')">
         Add to cart
         <span class="btn-arrow"><svg width="12" height="12" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
       </button>
@@ -383,6 +438,59 @@
 <div id="toast" style="position:fixed;bottom:32px;right:32px;background:var(--dark);color:#fff;padding:14px 24px;border-radius:50px;font-size:0.85rem;border:1px solid rgba(201,123,46,0.4);z-index:9999;transform:translateY(80px);opacity:0;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);pointer-events:none;">
   <span id="toastMsg">Added to cart ✓</span>
 </div>
-<script src="script/index.js" type="module"></script>
+
+<!-- HAMBURGER FAB + PANEL -->
+<button id="hamburgerFab" class="hamburger-fab" type="button" aria-label="Toggle menu" aria-pressed="false">
+  <span class="hamburger-fab-icon">☰</span>
+</button>
+
+<div id="hamburgerPanel" class="hamburger-panel" aria-hidden="true">
+  <div class="hamburger-panel-header">
+    <span class="hamburger-panel-title">Quick Actions</span>
+    <button class="hamburger-panel-close" id="hamburgerPanelClose" type="button" aria-label="Close menu">✕</button>
+  </div>
+  <div class="hamburger-panel-body">
+    <a href="index.html" class="hamburger-panel-btn">
+      <span class="hp-btn-icon">🏠</span>
+      <span>Home</span>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
+    </a>
+    <a href="collection.html" class="hamburger-panel-btn">
+      <span class="hp-btn-icon">✨</span>
+      <span>Collection</span>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
+    </a>
+    <a href="cart.html" class="hamburger-panel-btn">
+      <span class="hp-btn-icon">🛒</span>
+      <span>Cart</span>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
+    </a>
+    <a href="checkout.html" class="hamburger-panel-btn hamburger-panel-btn--primary">
+      <span class="hp-btn-icon">💳</span>
+      <span>Checkout</span>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
+    </a>
+    <div class="hamburger-panel-divider"></div>
+    <button class="hamburger-panel-btn hamburger-panel-btn--placeholder" disabled>
+      <span class="hp-btn-icon">👤</span>
+      <span>Account</span>
+      <span class="hp-btn-badge">Soon</span>
+    </button>
+    <button class="hamburger-panel-btn hamburger-panel-btn--placeholder" disabled>
+      <span class="hp-btn-icon">❤️</span>
+      <span>Wishlist</span>
+      <span class="hp-btn-badge">Soon</span>
+    </button>
+    <button class="hamburger-panel-btn hamburger-panel-btn--placeholder" disabled>
+      <span class="hp-btn-icon">⚙️</span>
+      <span>Settings</span>
+      <span class="hp-btn-badge">Soon</span>
+    </button>
+  </div>
+</div>
+
+<div id="hamburgerOverlay" class="hamburger-overlay" aria-hidden="true"></div>
+
+<script src="main.js"></script>
 </body>
 </html>

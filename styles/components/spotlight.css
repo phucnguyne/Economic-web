@@ -1,0 +1,110 @@
+/* ── BESTSELLER SPOTLIGHT ── */
+/* ── BESTSELLER SPOTLIGHT ── */
+.spotlight {
+  padding: 100px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.spotlight-img {
+  height: 520px;
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-img .img-placeholder-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.spotlight-img .img-placeholder {
+  height: 100%;
+}
+.spotlight-badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: var(--dark);
+  border: 1px solid var(--amber);
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.spotlight-info .section-eyebrow {
+  margin-bottom: 16px;
+}
+.spotlight-name {
+  font-family: "Noto Serif Display", serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+.spotlight-desc {
+  font-size: 0.94rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+.spotlight-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.spec-item {
+  border-left: 2px solid var(--amber);
+  padding-left: 16px;
+}
+.spec-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.spec-value {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.big-price {
+  font-family: "Noto Serif Display", serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--amber);
+}
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  background: var(--dark);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  font-family: "Noto Serif Display", serif;
+  transition:
+    background 0.3s,
+    transform 0.2s;
+}
+.btn-dark:hover {
+  background: #2a2420;
+  transform: scale(1.03);
+}
+.btn-dark .btn-arrow {
+  background: var(--amber);
+}
