@@ -1,0 +1,177 @@
+/* ═══════════════════════════════════════════
+   PAGE HERO — Shared hero layout for
+   cart, checkout, tracking pages
+   ═══════════════════════════════════════════ */
+
+.hero-grid {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 32rem;
+}
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 22px;
+}
+.hero-kicker::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--amber);
+}
+.hero-title {
+  font-family: "Noto Serif Display", serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--amber-light);
+}
+.hero-desc {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 28px;
+}
+
+/* Stats strip */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.hero-stat-num {
+  font-family: "Noto Serif Display", serif;
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: 300;
+}
+.hero-stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.hero-stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.12);
+}
+
+/* Right column */
+.hero-right-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero actions */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* Total bar */
+.hero-total-bar {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(var(--amber-rgb), 0.3);
+  background: rgba(var(--amber-rgb), 0.07);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+.hero-total-bar span:last-child {
+  color: var(--amber);
+  font-family: "Noto Serif Display", serif;
+  font-size: 1.1rem;
+}
+
+/* Hero card */
+.hero-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(var(--amber-rgb),0.25);
+  border-radius: 24px;
+  padding: 28px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+.hero-card-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 16px;
+}
+.hero-card-title {
+  font-family: "Noto Serif Display", serif;
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.hero-card-desc {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+.hero-card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Section title patterns shared by cart/checkout/tracking */
+.section-title-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.section-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: "Noto Serif Display", serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  color: var(--text-dark);
+}
+.section-note {
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}

@@ -22,23 +22,31 @@
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
-<nav id="navbar">
+<nav id="navbar" class="nav-theme-dark">
   <a href="index.html" class="logo">
     <div class="logo-icon"></div>
     Libra Lumina
   </a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="#curated">Curated Sets</a></li>
-    <li><a href="#details">Design Notes</a></li>
+    <li><a href="index.html#collection">Collection</a></li>
+    <li><a href="index.html#mission">Our Mission</a></li>
+    <li><a href="index.html#spotlight">Bestsellers</a></li>
     <li><a href="index.html#about">About us</a></li>
   </ul>
   <div class="nav-right">
-    <button class="nav-icon-btn" type="button" aria-label="Profile">
+    <div class="search-bar">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search..."/>
+    </div>
+    <div class="nav-icon-btn">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    </button>
+    </div>
     <a class="nav-icon-btn" href="cart.html" aria-label="Open cart">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    </a>
+    <a href="collection.html" class="nav-cta">
+      Shop Now
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
 </nav>

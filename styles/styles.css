@@ -1,27 +1,32 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #EFE8D5; /* warm light background */
+  --bg: #F8F5F2; /* very light warm background */
+  --comp-light: #E6E6FA; /* complementary soft lavender */
+  --comp-dark: #6A5ACD; /* complementary deep blue/purple */
   --dark: #0F0A07; /* deep charcoal */
   --dark2: #2C1E14; /* rich espresso secondary */
   --amber: #B8860B; /* dark gold accent */
   --amber-light: #D4AF37; /* lighter gold */
   --amber-glow: #FFD700; /* bright gold glow */
-  --amber-rgb: 184, 134, 11; /* amber RGB for rgba() usage */
+  --amber-rgb: 184, 134, 11; /* amber RGB */
   --cream: #FAF5E4; /* off-white cream */
-  --text-dark: #2B2B2B; /* deep dark text */
+  --text-dark: #1A1A1A; /* deep dark text */
   --text-muted: #6C757D; /* muted gray */
-  --glass: rgba(255,255,255,0.04);
-  --glass-border: rgba(255,255,255,0.08);
-  --radius: 20px;
+  --glass: rgba(255,255,255,0.4);
+  --glass-border: rgba(255,255,255,0.6);
+  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.05);
+  --radius: 24px;
   --radius-sm: 12px;
+  --radius-lg: 40px;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Noto Serif Display', serif;
-  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(135deg, var(--bg) 0%, var(--comp-light) 100%);
+  background-attachment: fixed;
   color: var(--text-dark);
   overflow-x: hidden;
   cursor: none;

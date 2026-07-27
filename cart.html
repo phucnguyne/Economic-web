@@ -21,22 +21,31 @@
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
-<nav id="navbar">
+<nav id="navbar" class="nav-theme-dark">
   <a href="index.html" class="logo">
     <div class="logo-icon"></div>
     Libra Lumina
   </a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="collection.html">Collection</a></li>
-    <li><a href="index.html#about">Reviews</a></li>
+    <li><a href="index.html#collection">Collection</a></li>
+    <li><a href="index.html#mission">Our Mission</a></li>
+    <li><a href="index.html#spotlight">Bestsellers</a></li>
+    <li><a href="index.html#about">About us</a></li>
   </ul>
   <div class="nav-right">
-    <button class="nav-icon-btn" type="button" aria-label="Profile">
+    <div class="search-bar">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search..."/>
+    </div>
+    <div class="nav-icon-btn">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    </button>
-    <a class="nav-icon-btn is-active" href="cart.html" aria-label="Open cart">
+    </div>
+    <a class="nav-icon-btn" href="cart.html" aria-label="Open cart">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    </a>
+    <a href="collection.html" class="nav-cta">
+      Shop Now
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
 </nav>
@@ -47,7 +56,23 @@
     <div class="hero-copy">
       <div class="hero-kicker">Cart Preview</div>
       <h1 class="hero-title">Your glow, <em>curated</em></h1>
-      <p class="hero-desc">A warm, editorial cart page that matches the Libra Lumina identity. Review your lamps, adjust quantities, and head to checkout.</p>
+      <p class="hero-desc">Review your lamps, adjust quantities, and head to checkout. Every order ships in 24 hours with carbon-neutral packaging.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">24h</span>
+          <span class="hero-stat-label">Express shipping</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">Free</span>
+          <span class="hero-stat-label">Returns, always</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">100%</span>
+          <span class="hero-stat-label">Secure checkout</span>
+        </div>
+      </div>
       <div class="hero-actions">
         <a class="btn-primary" href="collection.html">
           Continue shopping
@@ -56,13 +81,33 @@
         <button class="btn-outline" id="heroCheckoutBtn" type="button">Proceed to checkout</button>
       </div>
     </div>
-    <div class="hero-card">
-      <div class="hero-card-label">Order spotlight</div>
-      <div class="hero-card-title">Aura Glass Lamp</div>
-      <p class="hero-card-desc">Hand-blown glass with a warm core glow. Ships in 24 hours.</p>
-      <div class="hero-card-meta">
-        <span>2 items</span>
-        <span>$1,260.00</span>
+    <div class="hero-right-col">
+      <div class="hero-card" style="display: flex; gap: 16px; align-items: center;">
+        <div style="width: 80px; height: 80px; border-radius: 12px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1);">
+          <svg width="24" height="24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        </div>
+        <div style="flex: 1;">
+          <div class="hero-card-label">Order spotlight</div>
+          <div class="hero-card-title" style="font-size: 1.15rem; margin-bottom: 4px;">Aura Glass Lamp</div>
+          <p class="hero-card-desc" style="margin-bottom: 8px;">Hand-blown glass. Ships in 24 hours.</p>
+          <div class="hero-card-meta">
+            <span>2 items</span>
+            <span style="color: var(--amber);">$1,260.00</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card" style="margin-top: 16px; background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.08); display: flex; gap: 16px; align-items: center;">
+        <div style="width: 60px; height: 60px; border-radius: 10px; background: rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px dashed rgba(255,255,255,0.1);">
+          <svg width="20" height="20" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        </div>
+        <div style="flex: 1;">
+          <div class="hero-card-label" style="color: rgba(255,255,255,0.45);">Most viewed</div>
+          <div class="hero-card-title" style="font-size: 1.05rem; margin-bottom: 4px;">Lumina Desk Arc</div>
+          <div class="hero-card-meta">
+            <span style="color: rgba(255,255,255,0.5);">Trending now</span>
+            <span style="color: var(--amber);">$480.00</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
