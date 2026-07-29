@@ -392,7 +392,7 @@ if (catalogGrid) {
             ${renderSwatchesHTML(product.colors, { light: true })}
             <div class="catalog-product-price-row">
               <div class="catalog-product-price">${product.price.toLocaleString('vi-VN')} ₫</div>
-              <a class="catalog-product-link" href="index.html#collection">View</a>
+              <a href="javascript:void(0)" class="catalog-product-link" data-view-product="${product.name}" aria-label="View details">View</a>
             </div>
           </div>
         </article>
@@ -447,4 +447,110 @@ if (catalogGrid) {
   updateSortToggle();
 
   renderCatalog(activeFilter);
+
+  // ── PRODUCT MODAL LOGIC ──
+  const productModalOverlay = document.getElementById('productModal');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const modalProductTitle = document.getElementById('modalProductTitle');
+  const modalProductDesc = document.getElementById('modalProductDesc');
+  const modalPrice = document.getElementById('modalPrice');
+  const modalQtyInput = document.getElementById('modalQtyInput');
+  const modalQtyInc = document.getElementById('modalQtyInc');
+  const modalQtyDec = document.getElementById('modalQtyDec');
+  const modalAddToCart = document.getElementById('modalAddToCart');
+
+  let currentModalProduct = null;
+
+  const openProductModal = (productName) => {
+    const product = catalogProducts.find(p => p.name === productName);
+    if (!product || !productModalOverlay) return;
+    
+    currentModalProduct = product;
+    
+    // Populate data
+    if (modalProductTitle) modalProductTitle.textContent = product.name;
+    if (modalProductDesc) modalProductDesc.textContent = product.description;
+    if (modalPrice) modalPrice.textContent = product.price.toLocaleString('vi-VN');
+    if (modalQtyInput) modalQtyInput.value = 1;
+    
+    // Show modal
+    productModalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  };
+
+  const closeProductModal = () => {
+    if (!productModalOverlay) return;
+    productModalOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeProductModal);
+  }
+
+  if (productModalOverlay) {
+    productModalOverlay.addEventListener('click', (e) => {
+      if (e.target === productModalOverlay) {
+        closeProductModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && productModalOverlay && productModalOverlay.getAttribute('aria-hidden') === 'false') {
+      closeProductModal();
+    }
+  });
+
+  // Quantity controls
+  if (modalQtyInc && modalQtyInput) {
+    modalQtyInc.addEventListener('click', () => {
+      modalQtyInput.value = parseInt(modalQtyInput.value) + 1;
+    });
+  }
+  if (modalQtyDec && modalQtyInput) {
+    modalQtyDec.addEventListener('click', () => {
+      const currentVal = parseInt(modalQtyInput.value);
+      if (currentVal > 1) {
+        modalQtyInput.value = currentVal - 1;
+      }
+    });
+  }
+
+  // Add to cart from modal
+  if (modalAddToCart) {
+    modalAddToCart.addEventListener('click', () => {
+      if (currentModalProduct) {
+        const qty = parseInt(modalQtyInput ? modalQtyInput.value : 1) || 1;
+        
+        const cart = readCart();
+        const productId = currentModalProduct.name.toLowerCase().replace(/\s+/g, '-');
+        const existing = cart.find(item => item.id === productId);
+        
+        if (existing) {
+          existing.quantity += qty;
+        } else {
+          cart.push({ id: productId, quantity: qty });
+        }
+        saveCart(cart);
+        
+        closeProductModal();
+        
+        showToast(`<span>"${currentModalProduct.name}" added to cart ✓</span>
+          <span class="toast-actions">
+            <a href="cart.html" class="toast-btn">View Cart</a>
+            <a href="checkout.html" class="toast-btn toast-btn--primary">Checkout</a>
+          </span>`);
+      }
+    });
+  }
+
+  // Delegate click for view buttons
+  document.addEventListener('click', (e) => {
+    const viewBtn = e.target.closest('[data-view-product]');
+    if (viewBtn) {
+      const productName = viewBtn.getAttribute('data-view-product');
+      openProductModal(productName);
+    }
+  });
 }

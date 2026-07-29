@@ -156,7 +156,7 @@ nav.scrolled {
 /* ── DARK THEME NAV (For dark hero backgrounds) ── */
 /* Default: dark transparent background for contrast on dark heroes */
 nav.nav-theme-dark {
-  background: rgba(12, 10, 8, 0.72);
+ background: rgba(14, 13, 13, 0.15);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);

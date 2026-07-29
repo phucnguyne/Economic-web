@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles/collection.css">
   <link rel="stylesheet" href="styles/components/color-swatch.css">
+  <link rel="stylesheet" href="styles/components/product-modal.css">
 </head>
 <body class="collection-page">
 
@@ -299,6 +300,131 @@
 </div>
 
 <div id="hamburgerOverlay" class="hamburger-overlay" aria-hidden="true"></div>
+
+<!-- PRODUCT MODAL -->
+<div id="productModal" class="product-modal-overlay" aria-hidden="true">
+  <div class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalProductTitle">
+    <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">✕</button>
+
+    <div class="modal-layout">
+      <!-- Left side: Images & Highlights -->
+      <div class="modal-left">
+        <div class="modal-breadcrumbs">HOME / <span id="modalProductCategory">COLLECTION</span></div>
+        
+        <div class="modal-price-badge">
+          <div class="modal-price" id="modalPrice">$36.00</div>
+          <div class="modal-currency">VND</div>
+          <button class="modal-wishlist-btn" aria-label="Add to Wishlist">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.7 0l-1.1 1-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          </button>
+        </div>
+
+        <div class="modal-image-wrapper">
+          <div class="modal-image-placeholder" id="modalMainImage">
+             <svg width="42" height="42" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+             <span id="modalImageLabel">Product Image</span>
+          </div>
+        </div>
+
+        <div class="modal-highlights">
+          <div class="highlight-item">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Premium<br>Materials</span>
+          </div>
+          <div class="highlight-item">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span>Energy<br>Efficient</span>
+          </div>
+          <div class="highlight-item">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.7 0l-1.1 1-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            <span>Handmade<br>with Love</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center side: Details -->
+      <div class="modal-center">
+        <div class="modal-reviews">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+          </div>
+          <span id="modalReviewsCount">(128 Reviews)</span>
+        </div>
+
+        <h2 class="modal-title" id="modalProductTitle">Cedar & Vanilla</h2>
+        <div class="modal-subtitle">Designer Lamp</div>
+
+        <p class="modal-description" id="modalProductDesc">A warm and woody blend that brings calm, comfort, and timeless elegance to your space.</p>
+
+        <div class="modal-accordion">
+          <details class="accordion-item" open>
+            <summary class="accordion-header">
+              <div class="accordion-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
+              <div class="accordion-text">
+                <div class="accordion-title">Specifications</div>
+                <div class="accordion-desc">Dimensions, Weight, Material</div>
+              </div>
+              <div class="accordion-toggle">+</div>
+            </summary>
+            <div class="accordion-content">Height: 30cm, Diameter: 15cm. Crafted from hand-blown glass and brushed brass.</div>
+          </details>
+          <details class="accordion-item">
+            <summary class="accordion-header">
+              <div class="accordion-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <div class="accordion-text">
+                <div class="accordion-title">Illumination</div>
+                <div class="accordion-desc">Bulb type, Wattage, Color Temp</div>
+              </div>
+              <div class="accordion-toggle">+</div>
+            </summary>
+            <div class="accordion-content">Includes a 5W dimmable LED bulb. 2700K warm white glow.</div>
+          </details>
+          <details class="accordion-item">
+            <summary class="accordion-header">
+              <div class="accordion-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/></svg></div>
+              <div class="accordion-text">
+                <div class="accordion-title">Care & Maintenance</div>
+                <div class="accordion-desc">Cleaning, Warranty</div>
+              </div>
+              <div class="accordion-toggle">+</div>
+            </summary>
+            <div class="accordion-content">Wipe clean with a dry, soft cloth. Avoid using harsh chemicals. 2-year warranty.</div>
+          </details>
+        </div>
+
+        <div class="modal-actions">
+          <div class="quantity-selector">
+            <button type="button" aria-label="Decrease quantity" id="modalQtyDec">-</button>
+            <input type="number" id="modalQtyInput" value="1" min="1" max="99" aria-label="Quantity">
+            <button type="button" aria-label="Increase quantity" id="modalQtyInc">+</button>
+          </div>
+          <button class="btn-add-to-cart" id="modalAddToCart">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Right side: Thumbnails -->
+      <div class="modal-right">
+        <div class="modal-right-inner">
+          <div class="thumbnail-track">
+            <button class="thumbnail-btn active" aria-label="View image 1"><div class="thumb-ph"></div></button>
+            <button class="thumbnail-btn" aria-label="View image 2"><div class="thumb-ph"></div></button>
+            <button class="thumbnail-btn" aria-label="View image 3"><div class="thumb-ph"></div></button>
+          </div>
+          <button class="scroll-down-btn" aria-label="Scroll images down">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="main.js"></script>
 </body>

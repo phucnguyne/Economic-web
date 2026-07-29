@@ -1,0 +1,438 @@
+/* PRODUCT MODAL STYLES */
+
+.product-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 9000; /* Ensure custom cursor (9999) stays on top */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.product-modal-overlay[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.product-modal {
+  background-color: #ffffff; /* Crisp white like the design */
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  border-radius: 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  transform: translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-modal-overlay[aria-hidden="false"] .product-modal {
+  transform: translateY(0);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s ease;
+}
+.modal-close-btn:hover {
+  color: #000;
+}
+
+.modal-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  height: 100%;
+}
+
+/* LEFT SIDE */
+.modal-left {
+  padding: 40px;
+  position: relative;
+}
+
+.modal-breadcrumbs {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: #555;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+
+.modal-image-wrapper {
+  position: relative;
+  margin-top: 10px;
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 20px 20px 100px 20px;
+  background: #ebe7de; /* Warm beige shape */
+  overflow: visible; /* To allow price tag to overflow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image-placeholder {
+  color: rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  z-index: 1;
+}
+
+.modal-price-badge {
+  height: 67px;
+  width: 165px;
+  position: absolute;
+  top: 65px;
+  left: 20px;
+  background: #2a2723;
+  color: #fff;
+  padding: 24px 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  z-index: 3;
+}
+
+.modal-price {
+  font-size: 1.15rem;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 3.5px;
+}
+
+.modal-currency {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-left: 3px;
+  letter-spacing: 0.05em;
+  /* margin-bottom: 24px; */
+}
+
+.modal-wishlist-btn {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.modal-wishlist-btn:hover {
+  opacity: 1;
+}
+
+.modal-highlights {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  background: #f7f5f0;
+  padding: 20px 30px;
+  border-radius: 20px;
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  color: #555;
+  gap: 8px;
+}
+.highlight-item svg {
+  color: #8a7a63;
+}
+
+/* CENTER SIDE */
+.modal-center {
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-reviews {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  color: #666;
+}
+.stars {
+  display: flex;
+  color: #b5835a;
+  width: 14px;
+  gap: 2px;
+}
+.stars svg {
+  width: 14px;
+  height: 14px;
+}
+
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: #222;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.modal-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 2rem;
+  color: #b5835a;
+  margin: 0 0 24px 0;
+}
+
+.modal-description {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.modal-accordion {
+  margin-bottom: 40px;
+}
+
+.accordion-item {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+}
+.accordion-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+}
+.accordion-header::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b5835a;
+  margin-right: 16px;
+}
+
+.accordion-text {
+  flex: 1;
+}
+.accordion-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #222;
+}
+.accordion-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  color: #888;
+}
+.accordion-toggle {
+  font-size: 1.2rem;
+  color: #666;
+  font-family: monospace;
+}
+
+.accordion-item[open] .accordion-toggle {
+  transform: rotate(45deg);
+}
+
+.accordion-content {
+  padding: 16px 0 16px 48px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  background: #f7f5f0;
+  border-radius: 30px;
+  padding: 4px;
+}
+.quantity-selector button {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #555;
+}
+.quantity-selector input {
+  width: 40px;
+  text-align: center;
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: #222;
+  -moz-appearance: textfield;
+}
+.quantity-selector input::-webkit-outer-spin-button,
+.quantity-selector input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn-add-to-cart {
+  flex: 1;
+  background: #2a2723;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 16px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: background 0.2s;
+}
+.btn-add-to-cart:hover {
+  background: #443f38;
+}
+
+/* RIGHT SIDE (Thumbnails) */
+.modal-right {
+  padding: 70px 30px 40px 0;
+  display: flex;
+  align-items: stretch;
+}
+
+.modal-right-inner {
+  background: #ebe6df; /* Pill container */
+  border-radius: 40px;
+  padding: 24px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.thumbnail-track {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.thumbnail-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.thumb-ph {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #cfc8b7;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.thumbnail-btn.active .thumb-ph {
+  border-color: #2a2723;
+}
+
+.scroll-down-btn {
+  background: #c38452; /* Match the brown from the image */
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.scroll-down-btn:hover {
+  background: #a86c3d;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .modal-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    overflow-y: auto;
+    height: 80vh;
+  }
+  .modal-right {
+    padding: 20px;
+    justify-content: center;
+  }
+  .modal-right-inner {
+    flex-direction: row;
+    padding: 12px 24px;
+  }
+  .thumbnail-track {
+    flex-direction: row;
+  }
+  .scroll-down-btn {
+    display: none;
+  }
+}
